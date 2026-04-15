@@ -17,9 +17,9 @@ const videoData: Record<
     titleIT: "Il Museo del Caffè — Le Caffettiere Iconiche",
     titleTH: "พิพิธภัณฑ์กาแฟ — เครื่องชงในตำนาน",
     videoUrl: [
-      "https://pub-placeholder.r2.dev/sipsofitaly/bialetti.mp4",
-      "https://pub-placeholder.r2.dev/sipsofitaly/cuccumella.mp4",
-      "https://pub-placeholder.r2.dev/sipsofitaly/caffettiere-storia.mp4",
+      "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/bialetti.mp4",
+      "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/cuccumella.mp4",
+      "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/caffettiere-storia.mp4",
     ],
     subtitles: ["La Bialetti", "La Cuccumella", "La Storia"],
   },
@@ -27,32 +27,32 @@ const videoData: Record<
     titleEN: "The Perfect Italian Cappuccino",
     titleIT: "Il Cappuccino Perfetto all'Italiana",
     titleTH: "คาปูชิโนอิตาเลียนที่สมบูรณ์แบบ",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/cappuccino2.mp4",
+    videoUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/cappuccino.mp4",
   },
   colors: {
     titleEN: "The Colors of Coffee",
     titleIT: "I Colori del Caffè",
     titleTH: "สีสันของกาแฟ",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/colori-caffe_1.mp4",
+    videoUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/colors.mp4",
   },
   espresso: {
     titleEN: "The Perfect Espresso",
     titleIT: "Il Vero Espresso Italiano",
     titleTH: "เอสเปรสโซอิตาเลียนแท้",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/espresso_1.mp4",
+    videoUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/espresso.mp4",
   },
   morettino: {
     titleEN: "Morettino — A Sicilian Coffee Story",
     titleIT: "Morettino — Una Storia di Caffè Siciliana",
     titleTH: "โมเรตติโน — เรื่องราวกาแฟจากซิซิลี",
     videoUrl:
-      "https://pub-placeholder.r2.dev/sipsofitaly/morettino-storia-del-caffe.mp4",
+      "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/morettino.mp4",
   },
   aroma: {
     titleEN: "Follow Your Nose — Coffee Aromas",
     titleIT: "Segui il Naso — Gli Aromi del Caffè",
     titleTH: "ตามกลิ่นมา — กลิ่นหอมของกาแฟ",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/olfatto.mp4",
+    videoUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/aroma.mp4",
   },
 };
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Users, Wind, Eye, Hand, type LucideIcon } from "lucide-react";
 
@@ -44,20 +45,13 @@ export default function Home() {
   return (
     <main className="flex-1 w-full px-5 py-10 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-5xl flex flex-col items-center">
-        <div
-          className="mb-10 sm:mb-14 flex items-center justify-center rounded-full border px-8 py-5"
-          style={{
-            borderColor: "rgba(200, 169, 110, 0.5)",
-            backgroundColor: "#2C1A10",
-          }}
-        >
-          <span
-            className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl tracking-[0.25em] uppercase"
-            style={{ color: "#C8A96E" }}
-          >
-            Sips of Italy
-          </span>
-        </div>
+        <Image
+          src="/logo.png"
+          width={140}
+          height={140}
+          alt="Sips of Italy"
+          className="mx-auto mb-8"
+        />
 
         <h1
           className="font-[family-name:var(--font-playfair)] text-center text-3xl sm:text-5xl md:text-6xl leading-tight"
@@ -75,31 +69,37 @@ export default function Home() {
         </p>
 
         <div className="mt-12 sm:mt-16 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          {experiences.map(({ slug, titleEN, titleIT, titleTH, Icon }) => (
+          {experiences.map(({ slug, titleEN, titleIT, titleTH, Icon }, index) => (
             <Link
               key={slug}
               href={`/v/${slug}`}
               className="group relative flex flex-col rounded-2xl p-6 sm:p-7 border transition-all duration-300 hover:-translate-y-0.5"
               style={{
-                backgroundColor: "#3D2314",
-                borderColor: "rgba(200, 169, 110, 0.4)",
+                backgroundColor: "#F5E7C9",
+                borderColor: "rgba(139, 69, 19, 0.3)",
               }}
             >
+              <span
+                className="absolute top-4 right-5 font-[family-name:var(--font-playfair)] text-2xl"
+                style={{ color: "#8B4513", opacity: 0.4 }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <Icon
                 size={20}
                 strokeWidth={1.5}
-                color="#C8A96E"
+                color="#8B4513"
                 className="mb-6"
               />
               <h2
                 className="font-[family-name:var(--font-playfair)] text-xl sm:text-2xl leading-snug"
-                style={{ color: "#F5ECD7" }}
+                style={{ color: "#2C1A10" }}
               >
                 {titleEN}
               </h2>
               <p
                 className="mt-3 text-sm leading-relaxed"
-                style={{ color: "#C4A882", opacity: 0.7 }}
+                style={{ color: "#6B4C2A" }}
               >
                 {titleIT}
                 <br />
@@ -107,7 +107,7 @@ export default function Home() {
               </p>
               <span
                 className="pointer-events-none absolute inset-0 rounded-2xl border transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                style={{ borderColor: "#C8A96E" }}
+                style={{ borderColor: "rgba(139, 69, 19, 0.8)" }}
               />
             </Link>
           ))}

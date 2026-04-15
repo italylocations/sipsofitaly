@@ -1,6 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Wind, Eye, Hand, type LucideIcon } from "lucide-react";
+import {
+  Landmark,
+  Coffee,
+  Palette,
+  Zap,
+  Sprout,
+  Wind,
+  type LucideIcon,
+} from "lucide-react";
 
 type Experience = {
   slug: string;
@@ -12,32 +20,46 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    slug: "sociality",
-    titleEN: "3 Minutes of Sociality",
-    titleIT: "3 minuti di socialità",
-    titleTH: "3 นาทีแห่งการเข้าสังคม",
-    Icon: Users,
+    slug: "museum",
+    titleEN: "The Coffee Museum",
+    titleIT: "Il Museo del Caffè",
+    titleTH: "พิพิธภัณฑ์กาแฟ",
+    Icon: Landmark,
   },
   {
-    slug: "nose",
+    slug: "cappuccino",
+    titleEN: "The Perfect Cappuccino",
+    titleIT: "Il Cappuccino Perfetto",
+    titleTH: "คาปูชิโนที่สมบูรณ์แบบ",
+    Icon: Coffee,
+  },
+  {
+    slug: "colors",
+    titleEN: "The Colors of Coffee",
+    titleIT: "I Colori del Caffè",
+    titleTH: "สีสันของกาแฟ",
+    Icon: Palette,
+  },
+  {
+    slug: "espresso",
+    titleEN: "The Perfect Espresso",
+    titleIT: "Il Vero Espresso Italiano",
+    titleTH: "เอสเปรสโซอิตาเลียนแท้",
+    Icon: Zap,
+  },
+  {
+    slug: "morettino",
+    titleEN: "Morettino — A Sicilian Story",
+    titleIT: "Morettino — Storia Siciliana",
+    titleTH: "โมเรตติโน — เรื่องราวซิซิลี",
+    Icon: Sprout,
+  },
+  {
+    slug: "aroma",
     titleEN: "Follow Your Nose",
-    titleIT: "Segui il tuo naso",
-    titleTH: "ใช้จมูกตามกลิ่นเลย",
+    titleIT: "Segui il Naso",
+    titleTH: "ตามกลิ่นมา",
     Icon: Wind,
-  },
-  {
-    slug: "eyes",
-    titleEN: "The First Sip is With Your Eyes",
-    titleIT: "Il primo sorso è con gli occhi",
-    titleTH: "จิบแรกคือด้วยสายตา",
-    Icon: Eye,
-  },
-  {
-    slug: "feel",
-    titleEN: "Can You Feel It?",
-    titleIT: "Lo senti?",
-    titleTH: "รู้สึกได้ไหม?",
-    Icon: Hand,
   },
 ];
 
@@ -68,7 +90,15 @@ export default function Home() {
           <span style={{ color: "#C8A96E" }}>•</span> ค้นพบ
         </p>
 
-        <div className="mt-12 sm:mt-16 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div
+          className="mt-6 text-center font-[family-name:var(--font-dm-sans)]"
+          style={{ color: "#6B4C2A", fontSize: "13px" }}
+        >
+          <p>Italy — the world&apos;s largest exporter of roasted coffee</p>
+          <p>Italia — il più grande esportatore mondiale di caffè tostato</p>
+        </div>
+
+        <div className="mt-12 sm:mt-16 w-full grid grid-cols-2 gap-4 sm:gap-6">
           {experiences.map(({ slug, titleEN, titleIT, titleTH, Icon }, index) => (
             <Link
               key={slug}

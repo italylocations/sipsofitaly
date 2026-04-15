@@ -8,37 +8,51 @@ const videoData: Record<
     titleEN: string;
     titleIT: string;
     titleTH: string;
-    videoUrl: string;
-    poster: string;
+    videoUrl: string | string[];
+    subtitles?: string[];
   }
 > = {
-  sociality: {
-    titleEN: "3 Minutes of Sociality",
-    titleIT: "3 minuti di socialità",
-    titleTH: "3 นาทีแห่งการเข้าสังคม",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/sociality.mp4",
-    poster: "",
+  museum: {
+    titleEN: "The Coffee Museum — Iconic Brewers",
+    titleIT: "Il Museo del Caffè — Le Caffettiere Iconiche",
+    titleTH: "พิพิธภัณฑ์กาแฟ — เครื่องชงในตำนาน",
+    videoUrl: [
+      "https://pub-placeholder.r2.dev/sipsofitaly/bialetti.mp4",
+      "https://pub-placeholder.r2.dev/sipsofitaly/cuccumella.mp4",
+      "https://pub-placeholder.r2.dev/sipsofitaly/caffettiere-storia.mp4",
+    ],
+    subtitles: ["La Bialetti", "La Cuccumella", "La Storia"],
   },
-  nose: {
-    titleEN: "Follow Your Nose",
-    titleIT: "Segui il tuo naso",
-    titleTH: "ใช้จมูกตามกลิ่นเลย",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/nose.mp4",
-    poster: "",
+  cappuccino: {
+    titleEN: "The Perfect Italian Cappuccino",
+    titleIT: "Il Cappuccino Perfetto all'Italiana",
+    titleTH: "คาปูชิโนอิตาเลียนที่สมบูรณ์แบบ",
+    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/cappuccino2.mp4",
   },
-  eyes: {
-    titleEN: "The First Sip is With Your Eyes",
-    titleIT: "Il primo sorso è con gli occhi",
-    titleTH: "จิบแรกคือด้วยสายตา",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/eyes.mp4",
-    poster: "",
+  colors: {
+    titleEN: "The Colors of Coffee",
+    titleIT: "I Colori del Caffè",
+    titleTH: "สีสันของกาแฟ",
+    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/colori-caffe_1.mp4",
   },
-  feel: {
-    titleEN: "Can You Feel It?",
-    titleIT: "Lo senti?",
-    titleTH: "รู้สึกได้ไหม?",
-    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/feel.mp4",
-    poster: "",
+  espresso: {
+    titleEN: "The Perfect Espresso",
+    titleIT: "Il Vero Espresso Italiano",
+    titleTH: "เอสเปรสโซอิตาเลียนแท้",
+    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/espresso_1.mp4",
+  },
+  morettino: {
+    titleEN: "Morettino — A Sicilian Coffee Story",
+    titleIT: "Morettino — Una Storia di Caffè Siciliana",
+    titleTH: "โมเรตติโน — เรื่องราวกาแฟจากซิซิลี",
+    videoUrl:
+      "https://pub-placeholder.r2.dev/sipsofitaly/morettino-storia-del-caffe.mp4",
+  },
+  aroma: {
+    titleEN: "Follow Your Nose — Coffee Aromas",
+    titleIT: "Segui il Naso — Gli Aromi del Caffè",
+    titleTH: "ตามกลิ่นมา — กลิ่นหอมของกาแฟ",
+    videoUrl: "https://pub-placeholder.r2.dev/sipsofitaly/olfatto.mp4",
   },
 };
 
@@ -49,6 +63,8 @@ export default async function VideoPage(props: PageProps<"/v/[slug]">) {
   if (!video) {
     redirect("/");
   }
+
+  const isMulti = Array.isArray(video.videoUrl);
 
   return (
     <main className="flex-1 w-full min-h-screen bg-black flex flex-col">
@@ -69,16 +85,45 @@ export default async function VideoPage(props: PageProps<"/v/[slug]">) {
           {video.titleEN}
         </h1>
 
-        <div className="w-full max-w-[900px] aspect-video">
-          <video
-            className="w-full h-full"
-            controls
-            playsInline
-            preload="metadata"
-            poster={video.poster || undefined}
-            src={video.videoUrl}
-          />
-        </div>
+        {isMulti ? (
+          <div className="w-full max-w-[900px] flex flex-col">
+            {(video.videoUrl as string[]).map((url, idx) => (
+              <div key={url} className="flex flex-col">
+                {idx > 0 && (
+                  <div
+                    className="my-10 sm:my-12 w-full h-px"
+                    style={{ backgroundColor: "rgba(245, 236, 215, 0.15)" }}
+                  />
+                )}
+                <h2
+                  className="font-[family-name:var(--font-playfair)] text-lg sm:text-xl md:text-2xl text-center mb-4 sm:mb-5"
+                  style={{ color: "#C4A882" }}
+                >
+                  {video.subtitles?.[idx]}
+                </h2>
+                <div className="w-full aspect-video">
+                  <video
+                    className="w-full h-full"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    src={url}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="w-full max-w-[900px] aspect-video">
+            <video
+              className="w-full h-full"
+              controls
+              playsInline
+              preload="metadata"
+              src={video.videoUrl as string}
+            />
+          </div>
+        )}
 
         <div
           className="mt-6 text-center text-xs sm:text-sm"

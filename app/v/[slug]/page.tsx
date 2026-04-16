@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Headphones } from "lucide-react";
 
 const videoData: Record<
   string,
@@ -8,7 +8,9 @@ const videoData: Record<
     titleEN: string;
     titleIT: string;
     titleTH: string;
-    videoUrl: string | string[];
+    videoUrl?: string | string[];
+    audioUrl?: string;
+    description?: string;
     subtitles?: string[];
   }
 > = {
@@ -60,6 +62,14 @@ const videoData: Record<
     titleTH: "ภารกิจไทยแลนด์ — ฟีเดอี โดนุม",
     videoUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/missione-thailandia.mp4",
   },
+  sound: {
+    titleEN: "Sound of an Italian Bar",
+    titleIT: "I Suoni del Bar Italiano",
+    titleTH: "เสียงของบาร์อิตาเลียน",
+    audioUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/bar-ambient.mp3",
+    description:
+      "Close your eyes. It's 8:30 AM in Italy. Espresso, voices, the clinking of cups. This is how millions of Italians start their day — standing at the bar, no time to sit.",
+  },
 };
 
 export default async function VideoPage(props: PageProps<"/v/[slug]">) {
@@ -70,6 +80,7 @@ export default async function VideoPage(props: PageProps<"/v/[slug]">) {
     redirect("/");
   }
 
+  const isAudio = !!video.audioUrl;
   const isMulti = Array.isArray(video.videoUrl);
 
   return (
@@ -84,6 +95,15 @@ export default async function VideoPage(props: PageProps<"/v/[slug]">) {
       </Link>
 
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-20 sm:py-24">
+        {isAudio && (
+          <Headphones
+            size={80}
+            strokeWidth={1.5}
+            color="#C8A96E"
+            className="mb-8"
+          />
+        )}
+
         <h1
           className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl md:text-4xl text-center mb-6 sm:mb-8"
           style={{ color: "#F5ECD7" }}
@@ -91,7 +111,22 @@ export default async function VideoPage(props: PageProps<"/v/[slug]">) {
           {video.titleEN}
         </h1>
 
-        {isMulti ? (
+        {isAudio ? (
+          <>
+            <p
+              className="max-w-md text-center italic font-[family-name:var(--font-dm-sans)] text-sm sm:text-base leading-relaxed mb-8"
+              style={{ color: "#C4A882" }}
+            >
+              {video.description}
+            </p>
+            <audio
+              className="w-full max-w-md"
+              controls
+              autoPlay
+              src={video.audioUrl}
+            />
+          </>
+        ) : isMulti ? (
           <div className="w-full max-w-[900px] flex flex-col">
             {(video.videoUrl as string[]).map((url, idx) => (
               <div key={url} className="flex flex-col">

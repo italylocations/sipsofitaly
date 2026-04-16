@@ -8,6 +8,7 @@ import {
   Sprout,
   Wind,
   Heart,
+  Headphones,
   type LucideIcon,
 } from "lucide-react";
 
@@ -68,6 +69,13 @@ const experiences: Experience[] = [
     titleIT: "Missione Thailandia — Fidei Donum",
     titleTH: "ภารกิจไทยแลนด์ — ฟีเดอี โดนุม",
     Icon: Heart,
+  },
+  {
+    slug: "sound",
+    titleEN: "Sound of an Italian Bar",
+    titleIT: "I Suoni del Bar Italiano",
+    titleTH: "เสียงของบาร์อิตาเลียน",
+    Icon: Headphones,
   },
 ];
 

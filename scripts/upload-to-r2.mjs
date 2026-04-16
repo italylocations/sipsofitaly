@@ -14,7 +14,12 @@ const s3 = new S3Client({
 })
 
 const Bucket = process.env.R2_BUCKET
-const files = readdirSync('./videos').filter(f => f.endsWith('.mp4'))
+const files = readdirSync('./videos').filter(f => f.endsWith('.mp4') || f.endsWith('.mp3'))
+
+const mimeTypes = {
+  '.mp4': 'video/mp4',
+  '.mp3': 'audio/mpeg',
+}
 
 for (const file of files) {
   const path = join('./videos', file)
@@ -33,12 +38,13 @@ for (const file of files) {
 
   const mb = (size / 1024 / 1024).toFixed(1)
   console.log(`⬆️  Upload ${file} (${mb} MB)...`)
+  const ext = file.slice(file.lastIndexOf('.')).toLowerCase()
   await s3.send(new PutObjectCommand({
     Bucket,
     Key: file,
     Body: createReadStream(path),
     ContentLength: size,
-    ContentType: 'video/mp4'
+    ContentType: mimeTypes[ext]
   }))
   console.log(`✅ Uploaded: ${file}`)
 }

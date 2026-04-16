@@ -54,6 +54,12 @@ const videoData: Record<
     titleTH: "ตามกลิ่นมา — กลิ่นหอมของกาแฟ",
     videoUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/aroma.mp4",
   },
+  missione: {
+    titleEN: "Missione Thailandia — Fidei Donum",
+    titleIT: "Missione Thailandia — Fidei Donum",
+    titleTH: "ภารกิจไทยแลนด์ — ฟีเดอี โดนุม",
+    videoUrl: "https://pub-8b9c2c7396314112acb0d6c1fcee430d.r2.dev/missione-thailandia.mp4",
+  },
 };
 
 export default async function VideoPage(props: PageProps<"/v/[slug]">) {

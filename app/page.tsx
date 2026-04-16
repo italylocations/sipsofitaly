@@ -7,6 +7,7 @@ import {
   Zap,
   Sprout,
   Wind,
+  Heart,
   type LucideIcon,
 } from "lucide-react";
 
@@ -60,6 +61,13 @@ const experiences: Experience[] = [
     titleIT: "Segui il Naso",
     titleTH: "ตามกลิ่นมา",
     Icon: Wind,
+  },
+  {
+    slug: "missione",
+    titleEN: "Missione Thailandia — Fidei Donum",
+    titleIT: "Missione Thailandia — Fidei Donum",
+    titleTH: "ภารกิจไทยแลนด์ — ฟีเดอี โดนุม",
+    Icon: Heart,
   },
 ];
 
